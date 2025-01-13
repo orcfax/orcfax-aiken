@@ -12,3 +12,37 @@ use aiken/bytearray
 pub fn starts_with(actual_id: ByteArray, expected_prefix: ByteArray) {
   ( actual_id |> bytearray.take(expected_prefix |> bytearray.length) ) == expected_prefix
 }
+
+pub fn mk_feed_id(feed_type: ByteArray, feed_name: ByteArray) {
+  feed_type
+    |> bytearray.concat("/")
+    |> bytearray.concat(feed_name)
+    |> bytearray.concat("/")
+}
+
+/// Less efficient but possibly clearer. 
+pub fn is_expected(
+  actual_id: ByteArray,
+  expected_feed_type: ByteArray,
+  expected_feed_name: ByteArray,
+) {
+  actual_id |> starts_with(mk_feed_id(expected_feed_type, expected_feed_name))
+}
+
+test test_mk_feed_id_a() {
+  let feed_id = mk_feed_id("CER", "ADA-USD")
+  feed_id == "CER/ADA-USD/"
+}
+
+test test_mk_feed_id_b() {
+  let feed_id = mk_feed_id("CER", "ADA-USD")
+  feed_id == #"4345522f4144412d5553442f"
+}
+
+test test_is_expected_a() {
+  is_expected("CER/ADA-USD/", "CER", "ADA-USD")
+}
+
+test test_is_expected_b() {
+  is_expected(#"4345522f4144412d5553442f", "CER", "ADA-USD")
+}

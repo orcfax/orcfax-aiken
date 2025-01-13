@@ -108,15 +108,13 @@ pub fn d04_example_0() {
       created_at: 1713377742844,
       body: Rational { num: 122345, denom: 6 },
     }
-  let context =
-    t.Context {
-      collect_after: 1713381462844,
-      collector: #"61dcf39e073ddc8dd79c0428bf83939378717c34abc91c806a6908ad7c",
-    }
+  let context = ""
   let datum: RationalFsDat = t.FsDat { statement, context }
   cbor.serialise(datum)
 }
 
 test test_04() {
-  d04_example_0() == #"d8799fd8799f466665656449441b0000018eed458ffcd8799f1a0001dde906ffffd8799f1b0000018eed7e533c581d61dcf39e073ddc8dd79c0428bf83939378717c34abc91c806a6908ad7cffff"
+  let expected =
+    #"d8799fd8799f466665656449441b0000018eed458ffcd8799f1a0001dde906ffff40ff"
+  d04_example_0() == expected
 }
