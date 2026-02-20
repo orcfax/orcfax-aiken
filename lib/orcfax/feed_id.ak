@@ -1,4 +1,4 @@
-use aiken/bytearray
+use aiken/primitive/bytearray
 
 /// Any consumer must check that the `feed_id` field of the Statement  
 /// is as expected. Usually the relevant feed is hard coded into the 

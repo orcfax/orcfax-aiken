@@ -1,5 +1,7 @@
 name = "orcfax/orcfax-aiken"
-version = "0.0.0"
+version = "0.0.1"
+compiler = "v1.1.21"
+plutus = "v3"
 license = "Apache-2.0"
 description = "Orcfax types and helpers for aiken"
 
@@ -10,5 +12,7 @@ platform = "github"
 
 [[dependencies]]
 name = "aiken-lang/stdlib"
-version = "1.9.0"
+version = "v3"
 source = "github"
+
+[config]

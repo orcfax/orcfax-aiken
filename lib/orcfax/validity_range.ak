@@ -13,7 +13,7 @@ use aiken/interval.{Finite, Interval, IntervalBound}
 ///     lb - created_at < thirty_minutes,  
 ///   }
 /// ```
-pub fn get_bounds(validity_range: Interval<Int>) -> (Int, Int) {
+pub fn get_bounds(validity_range: Interval) -> (Int, Int) {
   expect Interval {
     lower_bound: IntervalBound { bound_type: Finite(lb), .. },
     upper_bound: IntervalBound { bound_type: Finite(ub), .. },
